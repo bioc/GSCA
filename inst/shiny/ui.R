@@ -6,6 +6,8 @@
 ##       Maintainer:Zhicheng Ji (zji4@jhu.edu)      ##
 ######################################################
 
+<<<<<<< HEAD
+=======
 library(shiny)
 
 sidebarPanel3 <- function (...) 
@@ -13,11 +15,12 @@ sidebarPanel3 <- function (...)
       div(class = "span3", tags$form(class = "well", ...))
 }
 
+>>>>>>> FETCH_HEAD
 shinyUI(pageWithSidebar(
       
       headerPanel('GSCA: Gene Set Context Analysis'),
       
-      sidebarPanel3(
+      sidebarPanel(
             
             tags$head(
                   #      tags$style(type="text/css", "label.radio { display: inline-block; }", ".radio input[type=\"radio\"] { float: none; }"),
@@ -181,7 +184,7 @@ shinyUI(pageWithSidebar(
                                           uiOutput("Downloadsidebarui"))
                              )
             )               
-      ),
+      ,width=3),
       
       mainPanel(
             uiOutput("GSCAstatusui"),
