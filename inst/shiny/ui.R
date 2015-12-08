@@ -27,6 +27,7 @@ shinyUI(pageWithSidebar(
                   radioButtons("Mainmethod","Main Menu",
                                list("Input Gene Set"="Input",
                                     "Select Gene Set and Compendium"="Select",
+                                    "Explore Compendium"="Explore",
                                     "GSCA Analysis"="GSCA",
                                     "Save Results"="Download",
                                     "Utilities"="Utilities",
@@ -82,13 +83,13 @@ shinyUI(pageWithSidebar(
                              wellPanel(
                                    wellPanel(
                                          h5("Select Gene Set"),
-                                         uiOutput("Summarydataselect")
-                                   ),
-                                   checkboxInput("Summaryswitchordertf","Switch gene set order"),
-                                   conditionalPanel(condition = "input.Summaryswitchordertf==1",
-                                                    helpText("Switch the order of two gene sets"),
-                                                    uiOutput("Summaryswitchorderui"),
-                                                    p(actionButton("Summaryswitchbut","Switch"))
+                                         uiOutput("Summarydataselect"),
+                                         checkboxInput("Summaryswitchordertf","Switch gene set order"),
+                                         conditionalPanel(condition = "input.Summaryswitchordertf==1",
+                                                          helpText("Switch the order of two gene sets"),
+                                                          uiOutput("Summaryswitchorderui"),
+                                                          p(actionButton("Summaryswitchbut","Switch"))
+                                         )
                                    ),
                                    wellPanel(
                                          h5("Select Compendium"),
@@ -105,8 +106,9 @@ shinyUI(pageWithSidebar(
                                                           fileInput('Summaryuploadtabfile', 'Choose annotation file')
                                          )
                                    ),
+                                   uiOutput("SummaryQualitycontrolui"),
                                    wellPanel(
-                                         h5("Annotation Options"),
+                                         #h5("Annotation Options"),
                                          #radioButtons("Summaryannooptions","Choose Annotation Type",list("Disjoint Annotation"="Disjoint","Multiple Annotation"="Multiple","Disjoint and Multiple Annotation"="Both")),
                                          h5("Scaling Options"),                                         
                                          checkboxInput("Summarycompscale","Scaling and centering expression values across samples"),
@@ -117,6 +119,10 @@ shinyUI(pageWithSidebar(
                                                            "Median"="median"))
                                    )
                              )
+            ),
+            
+            conditionalPanel(condition="input.Mainmethod=='Explore'",
+                              uiOutput("Exploreselectui")
             ),
             
             conditionalPanel(condition="input.Mainmethod=='GSCA'",
@@ -274,6 +280,15 @@ shinyUI(pageWithSidebar(
                                    )
                              )
             ),
+            conditionalPanel(condition="input.Mainmethod=='Explore'",
+                             tabsetPanel(
+                                   tabPanel("Gene Expression",
+                                            uiOutput("Exploreplot")
+                                            ),
+                                   tabPanel("Annotation",checkboxInput("Explorealltf","Explore the whole compendium",value=T),dataTableOutput("Exploreannotable"))
+                             )
+                             
+            ),
             conditionalPanel(condition="input.Mainmethod=='GSCA'",
                              tabsetPanel(
                                    tabPanel("Plot",
@@ -298,8 +313,8 @@ shinyUI(pageWithSidebar(
             ),
             conditionalPanel(condition="input.Mainmethod=='About'",
                              p('GSCA: Gene Set Context Analysis'),
-                             p('Current Version: 1.5.0'),
-                             p('Release Date: 2015-1-6'),
+                             p('Current Version: 2.0.0'),
+                             p('Release Date: 2015-12-8'),
                              p('Author: Zhicheng Ji,Hongkai Ji'),
                              p('Maintainer: Zhicheng Ji <zji4@jhu.edu>'),
                              p(a("GSCA Github home page",href="https://github.com/zji90/GSCA",target="_blank")),
