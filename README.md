@@ -19,24 +19,29 @@ Users should have R installed on their computer before installing GSCA. R can be
 To run GSCA, users should first install at least one of the four data packages in R, which can be done by running the following commands:
 ```{r }
 #Affyhgu133aExpr (Human GPL96 array, about 316 MB in size) 
-source("http://bioconductor.org/biocLite.R")
-biocLite("Affyhgu133aExpr")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("Affyhgu133aExpr")
 #Affymoe4302Expr (Mouse GPL1261 array, about 418 MB in size)
-source("http://bioconductor.org/biocLite.R")
-biocLite("Affymoe4302Expr")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("Affymoe4302Expr")
 #Affyhgu133Plus2Expr (Human GPL570 array, about 224 MB in size)
-source("http://bioconductor.org/biocLite.R")
-biocLite("Affyhgu133Plus2Expr")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("Affyhgu133Plus2Expr")
 #Affyhgu133A2Expr (Human GPL571 array, about 9 MB in size)
-source("http://bioconductor.org/biocLite.R")
-biocLite("Affyhgu133A2Expr")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("Affyhgu133A2Expr")
 ```
 
 ### Install GSCA via Github (Recommended)
 To install the latest version of GSCA package via Github, run following commands in R:
 ```{r }
-source("http://bioconductor.org/biocLite.R")
-biocLite("rhdf5")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("rhdf5")
 if (!require("devtools"))
   install.packages("devtools")
 devtools::install_github("GSCA","zji90")
@@ -51,8 +56,9 @@ For users with R programming experience, command line tools are also available i
 ### Install GSCA via Bioconductor
 GSCA can also be installed via Bioconductor. Note that the GSCA package is not most up-to-dated on Bioconductor. To install GSCA via Bioconductor, run the following commands in R:
 ```{r }
-source("http://bioconductor.org/biocLite.R")
-biocLite("GSCA")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("GSCA")
 ```
 
 ## GSCA Demonstration Video
