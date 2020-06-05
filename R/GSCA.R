@@ -78,7 +78,7 @@ GSCA <- function(genedata,pattern,chipdata,scaledata=F,Pval.co=0.05,directory=NU
             singlegeneset <- genesetname[genesetid]                
             missinggene <- setdiff(genedata[singlegeneset == genedata[,1],2],geneid)
             genesetmissinggene[genesetid] <- length(missinggene)
-            genesettotalgenenum[genesetid] <- length(genedata[,1] == singlegeneset && genedata[,2] %in% geneid)
+            genesettotalgenenum[genesetid] <- nrow(genedata)
             
             ###Find samples matching the given pattern
             singlepattern <- pattern[pattern[,1]==singlegeneset,]
