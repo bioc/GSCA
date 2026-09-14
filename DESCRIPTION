@@ -1,7 +1,7 @@
 Package: GSCA
 Type: Package
 Title: GSCA: Gene Set Context Analysis
-Version: 2.43.0
+Version: 2.43.1
 Date: 2015-12-8
 Author: Zhicheng Ji, Hongkai Ji
 Maintainer: Zhicheng Ji <zji4@jhu.edu>
@@ -17,3 +17,4 @@ Imports: graphics
 Depends: shiny, sp, gplots, ggplot2, reshape2, RColorBrewer, rhdf5, R(>= 2.10.0)
 Suggests: Affyhgu133aExpr, Affymoe4302Expr, Affyhgu133A2Expr, Affyhgu133Plus2Expr
 biocViews: GeneExpression, Visualization, GUI
+PackageStatus: Deprecated
